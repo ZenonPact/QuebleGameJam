@@ -1,2 +1,2 @@
-# QuebleGameJam
+# QuebleGameJam/Godot Game Jam Project
 
