@@ -1,0 +1,136 @@
+[gd_scene format=3 uid="uid://bpyb45kp83vyw"]
+
+[ext_resource type="FontFile" uid="uid://3bx1alobh08h" path="res://Assets/Fonts/Asap/static/Asap_Expanded-ExtraBold.ttf" id="1_l7ard"]
+[ext_resource type="Script" uid="uid://qbqisf4g2yop" path="res://Scenes/UserInterface/victory_layer.gd" id="1_r3k0e"]
+[ext_resource type="Texture2D" uid="uid://b6wiukpqygfu1" path="res://Assets/UI/Icons/star.png" id="2_mxrwu"]
+[ext_resource type="FontFile" uid="uid://cl6j588pawlln" path="res://Assets/Fonts/Asap/static/Asap_SemiExpanded-Black.ttf" id="4_acbku"]
+[ext_resource type="FontFile" uid="uid://2haj65iumax1" path="res://Assets/Fonts/Asap/static/Asap_SemiExpanded-Bold.ttf" id="5_k60u5"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_mxrwu"]
+font = ExtResource("1_l7ard")
+font_size = 96
+
+[sub_resource type="LabelSettings" id="LabelSettings_r3k0e"]
+font = ExtResource("1_l7ard")
+
+[node name="VictoryLayer" type="Control" unique_id=1971181215]
+process_mode = 3
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_r3k0e")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=728938178]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.5411765)
+
+[node name="CenterContainer" type="CenterContainer" parent="ColorRect" unique_id=1874005962]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="ColorRect/CenterContainer" unique_id=284288805]
+custom_minimum_size = Vector2(400, 400)
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ColorRect/CenterContainer/PanelContainer" unique_id=571131006]
+layout_mode = 2
+
+[node name="VictoryLabel" type="Label" parent="ColorRect/CenterContainer/PanelContainer/VBoxContainer" unique_id=1168227027]
+layout_mode = 2
+text = "Victory"
+label_settings = SubResource("LabelSettings_mxrwu")
+horizontal_alignment = 1
+
+[node name="StarContainer" type="HBoxContainer" parent="ColorRect/CenterContainer/PanelContainer/VBoxContainer" unique_id=1231061709]
+layout_mode = 2
+
+[node name="Star1" type="TextureRect" parent="ColorRect/CenterContainer/PanelContainer/VBoxContainer/StarContainer" unique_id=32421835]
+unique_name_in_owner = true
+modulate = Color(0, 0, 0, 1)
+custom_minimum_size = Vector2(128, 128)
+layout_mode = 2
+texture = ExtResource("2_mxrwu")
+expand_mode = 2
+stretch_mode = 5
+
+[node name="Star2" type="TextureRect" parent="ColorRect/CenterContainer/PanelContainer/VBoxContainer/StarContainer" unique_id=347488891]
+unique_name_in_owner = true
+modulate = Color(0, 0, 0, 1)
+custom_minimum_size = Vector2(128, 128)
+layout_mode = 2
+texture = ExtResource("2_mxrwu")
+expand_mode = 2
+stretch_mode = 5
+
+[node name="Star3" type="TextureRect" parent="ColorRect/CenterContainer/PanelContainer/VBoxContainer/StarContainer" unique_id=995641925]
+unique_name_in_owner = true
+modulate = Color(0, 0, 0, 1)
+custom_minimum_size = Vector2(128, 128)
+layout_mode = 2
+texture = ExtResource("2_mxrwu")
+expand_mode = 2
+stretch_mode = 5
+
+[node name="OneSurvivedLabel" type="Label" parent="ColorRect/CenterContainer/PanelContainer/VBoxContainer" unique_id=185969890]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+text = "At Least One Sheep Survived +1"
+label_settings = SubResource("LabelSettings_r3k0e")
+horizontal_alignment = 1
+
+[node name="AllSurvivedLabel" type="Label" parent="ColorRect/CenterContainer/PanelContainer/VBoxContainer" unique_id=1462341547]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+text = "Every Sheep Is Alive +1"
+label_settings = SubResource("LabelSettings_r3k0e")
+horizontal_alignment = 1
+
+[node name="OnTimeLabel" type="Label" parent="ColorRect/CenterContainer/PanelContainer/VBoxContainer" unique_id=1683363498]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+text = "Less that 2min! +1"
+label_settings = SubResource("LabelSettings_r3k0e")
+horizontal_alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ColorRect/CenterContainer/PanelContainer/VBoxContainer" unique_id=1948602744]
+layout_mode = 2
+
+[node name="RestartButton" type="Button" parent="ColorRect/CenterContainer/PanelContainer/VBoxContainer/VBoxContainer" unique_id=391340531]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("4_acbku")
+theme_override_font_sizes/font_size = 34
+text = "Restart"
+
+[node name="NextLevelButton" type="Button" parent="ColorRect/CenterContainer/PanelContainer/VBoxContainer/VBoxContainer" unique_id=1909576966]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("5_k60u5")
+theme_override_font_sizes/font_size = 34
+text = "Next Level"
+
+[node name="QuitButton" type="Button" parent="ColorRect/CenterContainer/PanelContainer/VBoxContainer/VBoxContainer" unique_id=1493167221]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("4_acbku")
+theme_override_font_sizes/font_size = 34
+text = "Quit
+"
+
+[node name="Timer" type="Timer" parent="." unique_id=841082880]
+
+[connection signal="pressed" from="ColorRect/CenterContainer/PanelContainer/VBoxContainer/VBoxContainer/RestartButton" to="." method="restart_game"]
+[connection signal="pressed" from="ColorRect/CenterContainer/PanelContainer/VBoxContainer/VBoxContainer/NextLevelButton" to="." method="next_level"]
+[connection signal="pressed" from="ColorRect/CenterContainer/PanelContainer/VBoxContainer/VBoxContainer/QuitButton" to="." method="exit_game"]

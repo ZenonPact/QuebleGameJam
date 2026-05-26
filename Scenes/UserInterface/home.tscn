@@ -1,0 +1,130 @@
+[gd_scene format=3 uid="uid://b6by06523honx"]
+
+[ext_resource type="Texture2D" uid="uid://c0yf5o6xfkrvx" path="res://Assets/UI/ChatGPT Image Feb 8, 2026, 10_13_22 AM.png" id="1_hl1tq"]
+[ext_resource type="Script" uid="uid://cbf8ct5b5c6lc" path="res://Scenes/UserInterface/home.gd" id="1_j80vr"]
+[ext_resource type="FontFile" uid="uid://cy8u8oh4pr8m5" path="res://Assets/Fonts/Asap/static/Asap-Bold.ttf" id="2_w08jr"]
+[ext_resource type="Texture2D" uid="uid://bd3xlekonld3n" path="res://Assets/UI/Prinbles_Asset_Robin (v 1.1) (9_5_2023)/svg/Button/Rect/Fill/Default.svg" id="3_v28j7"]
+[ext_resource type="Texture2D" uid="uid://bcry8se310jdd" path="res://Assets/UI/Prinbles_Asset_Robin (v 1.1) (9_5_2023)/svg/Button/Rect/Fill/Hover-1.svg" id="4_w08jr"]
+[ext_resource type="Texture2D" uid="uid://duq658afvx0dx" path="res://Assets/UI/Prinbles_Asset_Robin (v 1.1) (9_5_2023)/svg/Button/Rect/Fill/Hover.svg" id="5_v28j7"]
+[ext_resource type="Texture2D" uid="uid://c37nj2352p8fb" path="res://Assets/UI/Prinbles_Asset_Robin (v 1.1) (9_5_2023)/svg/Logotype/Back.svg" id="7_kg2jh"]
+[ext_resource type="FontFile" uid="uid://dwpu7ocrs4y2w" path="res://Assets/Fonts/Asap/static/Asap_Expanded-Black.ttf" id="8_xrv68"]
+[ext_resource type="AudioStream" uid="uid://dgem7qw8othah" path="res://Assets/Sounds/Morning.mp3" id="9_ibcod"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_a7kew"]
+texture = ExtResource("3_v28j7")
+texture_margin_left = 64.0
+texture_margin_top = 8.0
+texture_margin_right = 64.0
+texture_margin_bottom = 16.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_v28j7"]
+texture = ExtResource("4_w08jr")
+texture_margin_left = 64.0
+texture_margin_top = 8.0
+texture_margin_right = 64.0
+texture_margin_bottom = 16.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_qs54o"]
+texture = ExtResource("5_v28j7")
+texture_margin_left = 64.0
+texture_margin_top = 8.0
+texture_margin_right = 64.0
+texture_margin_bottom = 16.0
+
+[sub_resource type="LabelSettings" id="LabelSettings_7ywcg"]
+font = ExtResource("8_xrv68")
+font_size = 50
+
+[node name="Home" type="Control" unique_id=1878650144]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_j80vr")
+
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=288201402]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer" unique_id=1534681687]
+layout_mode = 2
+texture = ExtResource("1_hl1tq")
+expand_mode = 1
+
+[node name="CenterContainer" type="CenterContainer" parent="MarginContainer" unique_id=964063231]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/CenterContainer" unique_id=46345332]
+custom_minimum_size = Vector2(50, 0)
+layout_mode = 2
+
+[node name="Button2" type="Button" parent="MarginContainer/CenterContainer/VBoxContainer" unique_id=901371587]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0.1448951, 0.3556989, 1)
+theme_override_colors/font_hover_color = Color(0.73917645, 0.7413787, 0.74739504, 1)
+theme_override_colors/icon_hover_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_w08jr")
+theme_override_font_sizes/font_size = 64
+theme_override_styles/normal = SubResource("StyleBoxTexture_a7kew")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_v28j7")
+theme_override_styles/hover = SubResource("StyleBoxTexture_qs54o")
+text = "Start"
+
+[node name="Button" type="Button" parent="MarginContainer/CenterContainer/VBoxContainer" unique_id=809871796]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0.1448951, 0.3556989, 1)
+theme_override_colors/font_hover_color = Color(0.73917645, 0.7413787, 0.74739504, 1)
+theme_override_colors/icon_hover_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_w08jr")
+theme_override_font_sizes/font_size = 64
+theme_override_styles/normal = SubResource("StyleBoxTexture_a7kew")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_v28j7")
+theme_override_styles/hover = SubResource("StyleBoxTexture_qs54o")
+text = "Quit
+"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer" unique_id=90967288]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/HBoxContainer" unique_id=1508975738]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("7_kg2jh")
+
+[node name="Label" type="Label" parent="MarginContainer/HBoxContainer/TextureRect" unique_id=593040160]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -267.0
+offset_top = -75.5
+offset_right = 267.0
+offset_bottom = 75.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "Baaa-ck Home
+"
+label_settings = SubResource("LabelSettings_7ywcg")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=9974007]
+stream = ExtResource("9_ibcod")
+volume_db = -10.0
+autoplay = true
+
+[connection signal="pressed" from="MarginContainer/CenterContainer/VBoxContainer/Button2" to="." method="start_game"]
+[connection signal="pressed" from="MarginContainer/CenterContainer/VBoxContainer/Button" to="." method="quit_game"]

@@ -1,0 +1,87 @@
+[gd_scene format=3 uid="uid://bsf5ulk08rgkt"]
+
+[ext_resource type="PackedScene" uid="uid://b4aiwpx3ev5eg" path="res://Assets/Animals/SheepScene.glb" id="1_02ppd"]
+[ext_resource type="Script" uid="uid://f2kd4xarf5go" path="res://Scenes/Sheep/sheep.gd" id="1_nue2e"]
+[ext_resource type="AudioStream" uid="uid://doa5gmhl0hqqg" path="res://Assets/Audios/animal_sheep_baa.mp3" id="3_pca6e"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_nue2e"]
+size = Vector3(2.5, 2.5, 2.5)
+
+[sub_resource type="Animation" id="Animation_nue2e"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("SheepScene:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("SheepScene:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_80q2c"]
+resource_name = "walking"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("SheepScene:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 0, 0), Vector3(0, 1, 0), Vector3(0, 1, 0), Vector3(0, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("SheepScene:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(-0.7853982, 0, 0), Vector3(0, 0, 0), Vector3(0.7853982, 0, 0), Vector3(0, 0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_3e31a"]
+_data = {
+&"RESET": SubResource("Animation_nue2e"),
+&"walking": SubResource("Animation_80q2c")
+}
+
+[node name="Sheep" type="CharacterBody3D" unique_id=1870469711]
+script = ExtResource("1_nue2e")
+
+[node name="SheepScene" parent="." unique_id=1821031436 instance=ExtResource("1_02ppd")]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=201216156]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.25, 0)
+shape = SubResource("BoxShape3D_nue2e")
+
+[node name="NavigationAgent3D" type="NavigationAgent3D" parent="." unique_id=1585927613]
+target_desired_distance = 2.0
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1725040946]
+libraries/ = SubResource("AnimationLibrary_3e31a")
+
+[node name="Baaa" type="AudioStreamPlayer3D" parent="." unique_id=1883035350]
+stream = ExtResource("3_pca6e")

@@ -1,0 +1,51 @@
+[gd_scene format=3 uid="uid://h5kggpyy8p1i"]
+
+[ext_resource type="Script" uid="uid://dwcrlq3ecv510" path="res://Scenes/UserInterface/score.gd" id="1_41p0u"]
+[ext_resource type="Texture2D" uid="uid://b17wejnpp0eft" path="res://Assets/UI/Icons/sheep.png" id="1_k4chj"]
+[ext_resource type="FontFile" uid="uid://br2dh4cqw3adg" path="res://Assets/Fonts/Bungee-Regular.ttf" id="2_ugjgt"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_41p0u"]
+font = ExtResource("2_ugjgt")
+font_size = 50
+
+[node name="Score" type="Control" unique_id=1610796544]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_41p0u")
+
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=1055241153]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 16
+theme_override_constants/margin_right = 16
+theme_override_constants/margin_bottom = 16
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer" unique_id=1469396081]
+layout_mode = 2
+size_flags_horizontal = 8
+
+[node name="Label" type="Label" parent="MarginContainer/HBoxContainer" unique_id=1112903839]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 10
+size_flags_vertical = 0
+text = "1
+"
+label_settings = SubResource("LabelSettings_41p0u")
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/HBoxContainer" unique_id=386977608]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+size_flags_horizontal = 10
+size_flags_vertical = 0
+texture = ExtResource("1_k4chj")
+expand_mode = 1

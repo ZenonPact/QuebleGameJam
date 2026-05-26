@@ -1,0 +1,14 @@
+[gd_scene format=3 uid="uid://b011b1j5nxlsc"]
+
+[ext_resource type="Script" uid="uid://cd3mh378ca3hk" path="res://Scenes/Gate/gate.gd" id="1_ywe2u"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_soj8o"]
+size = Vector3(5, 1, 1)
+
+[node name="Gate" type="Area3D" unique_id=25321866]
+script = ExtResource("1_ywe2u")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1506232215]
+shape = SubResource("BoxShape3D_soj8o")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

@@ -1,0 +1,97 @@
+[gd_scene format=3 uid="uid://de4v201u6wg8t"]
+
+[ext_resource type="Script" uid="uid://cgs1e4uxuku0s" path="res://Scenes/Main/path_follow_3d.gd" id="1_m1uvq"]
+[ext_resource type="AudioStream" uid="uid://dwi0hbrfkl3wx" path="res://Assets/Audios/WolfAttack.mp3" id="2_hr311"]
+[ext_resource type="PackedScene" uid="uid://bt8xuuhsd1vof" path="res://Assets/Animals/Wolf (1).glb" id="4_foa7b"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_l8h54"]
+transparency = 1
+albedo_color = Color(0.5470248, 0.17075631, 0.16933563, 0.49803922)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_m1uvq"]
+material = SubResource("StandardMaterial3D_l8h54")
+top_radius = 4.0
+bottom_radius = 4.0
+height = 0.02
+
+[sub_resource type="Animation" id="Animation_e8qo3"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Wolf:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Wolf:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 3.1415927, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_foa7b"]
+resource_name = "patroling"
+length = 0.8
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Wolf:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6, 0.8),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 0.3, 0), Vector3(0, 0.5, 0), Vector3(0, 0.3, 0), Vector3(0, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Wolf:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6, 0.8),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 3.1415927, 0), Vector3(-0.17453292, 3.1415927, 0), Vector3(0, 3.1415927, 0), Vector3(0.17453292, 3.1415927, 0), Vector3(0, 3.1415927, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_w8otc"]
+_data = {
+&"RESET": SubResource("Animation_e8qo3"),
+&"patroling": SubResource("Animation_foa7b")
+}
+
+[node name="PathFollow3D" type="PathFollow3D" unique_id=1527302391]
+transform = Transform3D(-0.99994934, 0, -0.010079602, 0, 0.99999976, 0, 0.010079604, 0, -0.9999491, 0, 0, 0)
+loop = false
+script = ExtResource("1_m1uvq")
+
+[node name="AggroAoe" type="MeshInstance3D" parent="." unique_id=1425828212]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.3885491, 0)
+mesh = SubResource("CylinderMesh_m1uvq")
+
+[node name="AttackSound" type="AudioStreamPlayer3D" parent="." unique_id=47093086]
+stream = ExtResource("2_hr311")
+volume_db = 50.0
+
+[node name="Wolf" parent="." unique_id=460595129 instance=ExtResource("4_foa7b")]
+transform = Transform3D(-1.5, 0, -1.3113416e-07, 0, 1.5, 0, 1.3113416e-07, 0, -1.5, 0, 0, 0)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1125451868]
+libraries/ = SubResource("AnimationLibrary_w8otc")
+autoplay = &"patroling"

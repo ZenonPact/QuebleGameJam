@@ -1,0 +1,99 @@
+[gd_scene format=3 uid="uid://d0sjtx6pofxms"]
+
+[ext_resource type="Script" uid="uid://bqcwgtwu386y8" path="res://Scenes/Player/player.gd" id="1_l8h54"]
+[ext_resource type="PackedScene" uid="uid://c0x7nwmydm5no" path="res://Assets/Animals/Dog.glb" id="2_4ntmi"]
+[ext_resource type="AudioStream" uid="uid://fe7cu5x0n17y" path="res://Assets/Sounds/skyclad_ANMLDog_Dachshund_Miniature_Male_Age_3_Bark_x3_1st_Closer_2nd_and_3rd_Run_Together_Exterior_SCS_NONE_476.mp3" id="3_xpcdj"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_btcbx"]
+size = Vector3(1, 1.5123291, 1.4394531)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_l8h54"]
+transparency = 1
+albedo_color = Color(0.5470248, 0.17075631, 0.16933563, 0.49803922)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_4ntmi"]
+material = SubResource("StandardMaterial3D_l8h54")
+top_radius = 4.0
+bottom_radius = 4.0
+height = 0.02
+
+[sub_resource type="Animation" id="Animation_btcbx"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Dog:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, -0.9, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Dog:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_4ntmi"]
+resource_name = "walk"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Dog:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0, -0.9, 0), Vector3(0, -0.7, 0), Vector3(0, -0.5, 0), Vector3(0, -0.7, 0), Vector3(0, -0.9, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Dog:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0.34906584, 0, 0), Vector3(0, 0, 0), Vector3(-0.34906584, 0, 0), Vector3(0, 0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_btcbx"]
+_data = {
+&"RESET": SubResource("Animation_btcbx"),
+&"walk": SubResource("Animation_4ntmi")
+}
+
+[node name="Player" type="CharacterBody3D" unique_id=961175476]
+script = ExtResource("1_l8h54")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=2010801498]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.11121273, -0.21972656)
+shape = SubResource("BoxShape3D_btcbx")
+
+[node name="BarkingAoe" type="MeshInstance3D" parent="." unique_id=521315277]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.6114509, 0)
+mesh = SubResource("CylinderMesh_4ntmi")
+
+[node name="Dog" parent="." unique_id=1131500306 instance=ExtResource("2_4ntmi")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.9, 0)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1520077592]
+libraries/ = SubResource("AnimationLibrary_btcbx")
+
+[node name="BarkingSound" type="AudioStreamPlayer3D" parent="." unique_id=1738545458]
+stream = ExtResource("3_xpcdj")
